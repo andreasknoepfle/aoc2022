@@ -1,0 +1,6 @@
+#!/bin/bash
+DIR=$(dirname "$0")
+
+cd "$DIR/.."
+
+mix run -e "Aoc2022.run(&Aoc2022.Door$1.run_$2()/1)" < "$DIR/$1/input.txt"
