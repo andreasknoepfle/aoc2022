@@ -17,6 +17,6 @@ defmodule Aoc2022.Door04Test do
   end
 
   test "run_b/0" do
-    # assert 70 == Door04.run_b(@input)
+    assert 4 == Door04.run_b(@input)
   end
 end
