@@ -1,8 +1,15 @@
 defmodule Aoc2022 do
   def run(mod, part) when part in [:run_a, :run_b] do
-    stream = IO.stream(:stdio, mod.stream_mode())
+    data =
+      case mod.stream_mode() do
+        :all ->
+          IO.read(:stdio)
 
-    apply(mod, part, [stream])
+        mode ->
+          IO.stream(:stdio, mode)
+      end
+
+    apply(mod, part, [data])
     |> IO.puts()
   end
 end
