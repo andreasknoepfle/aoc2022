@@ -1,4 +1,6 @@
 defmodule Aoc2022.Door02 do
+  use Aoc2022.DoorBehaviour
+
   @picks [:rock, :paper, :scissors]
 
   def run_a(stream) do

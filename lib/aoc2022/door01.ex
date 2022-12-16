@@ -1,4 +1,6 @@
 defmodule Aoc2022.Door01 do
+  use Aoc2022.DoorBehaviour
+
   def run_a(stream) do
     {current, max} =
       Enum.reduce(stream, {0, 0}, fn line, {current, max} ->

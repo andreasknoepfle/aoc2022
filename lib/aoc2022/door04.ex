@@ -1,4 +1,6 @@
 defmodule Aoc2022.Door04 do
+  use Aoc2022.DoorBehaviour
+
   def run_a(stream) do
     stream
     |> Stream.map(&String.trim/1)

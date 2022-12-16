@@ -1,4 +1,6 @@
 defmodule Aoc2022.Door05 do
+  use Aoc2022.DoorBehaviour
+
   def run_a(stream) do
     stream
     |> build_instructions()
