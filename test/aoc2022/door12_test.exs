@@ -36,8 +36,6 @@ defmodule Aoc2022.Door12Test do
 
   test "run_a/0" do
     assert 31 == Door12.run_a(@input)
-    assert 28 == Door12.run_a(@input2)
-    assert 27 == Door12.run_a(@input3)
   end
 
   test "run_b/0" do
