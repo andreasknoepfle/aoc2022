@@ -2,6 +2,13 @@ defmodule Aoc2022.Door12 do
   use Aoc2022.DoorBehaviour
 
   def run_a(stream) do
+    {heightmap, start, goal} = build_heightmap(stream)
+    graph = build_graph(heightmap)
+
+    length(:digraph.get_short_path(graph, start, goal)) - 1
+  end
+
+  defp build_heightmap(stream) do
     stream
     |> Stream.map(&String.trim/1)
     |> Stream.map(&String.to_charlist/1)
@@ -11,7 +18,6 @@ defmodule Aoc2022.Door12 do
       |> Enum.with_index()
       |> Enum.reduce({heightmap, start, goal}, &convert_row(index, &1, &2))
     end)
-    |> find_shortest_path()
   end
 
   defp convert_row(y, {?S, x}, {map, _, goal}),
@@ -23,7 +29,7 @@ defmodule Aoc2022.Door12 do
   defp convert_row(y, {height, x}, {map, start, goal}),
     do: {Map.put(map, {y, x}, height - ?a), start, goal}
 
-  defp find_shortest_path({heightmap, start, goal}) do
+  defp build_graph(heightmap) do
     graph = :digraph.new()
 
     Enum.each(heightmap, fn {v, _} ->
@@ -39,9 +45,23 @@ defmodule Aoc2022.Door12 do
       end)
     end)
 
-    length(:digraph.get_short_path(graph, start, goal)) - 1
+    graph
   end
 
-  def run_b(_stream) do
+  def run_b(stream) do
+    {heightmap, _, goal} = build_heightmap(stream)
+
+    graph = build_graph(heightmap)
+
+    heightmap
+    |> Enum.filter(fn {_, level} -> level == 0 end)
+    |> Enum.map(fn {v, _} ->
+      if path = :digraph.get_short_path(graph, v, goal) do
+        length(path)
+      end
+    end)
+    |> Enum.filter(& &1)
+    |> Enum.min()
+    |> Kernel.-(1)
   end
 end
