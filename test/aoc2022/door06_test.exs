@@ -3,7 +3,7 @@ defmodule Aoc2022.Door06Test do
 
   alias Aoc2022.Door06
 
-  test "run_a/0" do
+  test "run_a/1" do
     assert 7 == Door06.run_a("mjqjpqmgbljsphdztnvjfqwrcgsmlb" |> fake_stream(:codepoints))
     assert 5 == Door06.run_a("bvwbjplbgvbhsrlpgdmjqwftvncz" |> fake_stream(:codepoints))
     assert 6 == Door06.run_a("nppdvjthqldpwncqszvftbrmjlhg" |> fake_stream(:codepoints))
@@ -11,7 +11,7 @@ defmodule Aoc2022.Door06Test do
     assert 11 == Door06.run_a("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw" |> fake_stream(:codepoints))
   end
 
-  test "run_b/0" do
+  test "run_b/1" do
     assert 19 == Door06.run_b("mjqjpqmgbljsphdztnvjfqwrcgsmlb" |> fake_stream(:codepoints))
     assert 23 == Door06.run_b("bvwbjplbgvbhsrlpgdmjqwftvncz" |> fake_stream(:codepoints))
     assert 23 == Door06.run_b("nppdvjthqldpwncqszvftbrmjlhg" |> fake_stream(:codepoints))

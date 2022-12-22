@@ -12,11 +12,11 @@ defmodule Aoc2022.Door04Test do
          """
          |> fake_stream()
 
-  test "run_a/0" do
+  test "run_a/1" do
     assert 2 == Door04.run_a(@input)
   end
 
-  test "run_b/0" do
+  test "run_b/1" do
     assert 4 == Door04.run_b(@input)
   end
 end
